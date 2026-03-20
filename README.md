@@ -52,10 +52,10 @@ RL_FT/
 └── scripts/                 # Training entry points & result visualizations
 ```
 
-## Resources
+## Quickstart & Usage
 ### TODO
 
-## Quickstart & Usage
+## Resources
 ### TODO
 
 ## Simulation & Domain Randomization

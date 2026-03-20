@@ -1,0 +1,11 @@
+<mujoco>
+  <worldbody>
+    <geom density="1000" type="plane" size="99.99999 100 0.9999999" pos="-14.26093 -4.07777 0" quat="-0.9924039 0.08682413 -0.08682413 0.00759613" priority="0" contype="1" conaffinity="1" group="0" condim="3" solmix="1" solref="0.02 1" solimp="0.9 0.95 0.001" margin="0" gap="0" friction="1 0.005 0.0001" fluidcoef="5 0.25 1.5 1 1" name="GameObject_0" />
+    <body pos="-14.26091 -4.07777 0" quat="-1 0 0 0" name="Sphere Body_1">
+      <geom density="1000" type="sphere" size="5" pos="0 0 23.2" quat="-1 0 0 0" group="0" condim="3" margin="0" gap="0" fluidcoef="5 0.25 1.5 1 1" name="Sphere_2" />
+      <freejoint name="Free Joint_3" />
+    </body>
+  </worldbody>
+  <compiler coordinate="local" />
+  <option timestep="0.01999999" />
+</mujoco>

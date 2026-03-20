@@ -1,0 +1,15 @@
+# Python virtual environment
+.venv/
+
+# Pycache and compiled files
+__pycache__/
+*.pyc
+
+# Wandb local logs
+wandb/
+
+# OS generated files
+.DS_Store
+
+# Build files
+*.egg-info/

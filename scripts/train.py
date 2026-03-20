@@ -5,7 +5,6 @@ import gymnasium as gym
 
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "resources", "scenes"))
 
-print(os.path.join(BASE_DIR, "model.xml"))
 env = gym.make('PickAndPlace-v0', xml_path=os.path.join(BASE_DIR, "model.xml"))
 observation, info = env.reset()
 

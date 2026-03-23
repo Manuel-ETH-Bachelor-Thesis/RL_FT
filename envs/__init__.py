@@ -11,3 +11,9 @@ register(
     entry_point="envs.rolling_ball:RollingBall",
     max_episode_steps=2000,
 )
+
+register(
+    id="Move-v0",
+    entry_point="envs.move:Move",
+    max_episode_steps=2000,
+)

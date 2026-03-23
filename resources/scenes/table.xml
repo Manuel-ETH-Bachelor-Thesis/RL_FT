@@ -1,0 +1,6 @@
+
+<mujoco model="table">
+    <body name="table" pos="0.7 0 0.75">
+        <geom name="table_surface" type="box" size="0.5 0.5 0.025" rgba="0.8 0.6 0.4 1" material="wood_mat" friction="1.0 0.005 0.0001"/>
+    </body>
+</mujoco>

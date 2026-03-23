@@ -4,8 +4,8 @@ import envs
 import gymnasium as gym
 
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "resources", "scenes"))
+env = gym.make('PickAndPlace-v0', xml_path=os.path.join(BASE_DIR, "scene.xml"))
 
-env = gym.make('PickAndPlace-v0', xml_path=os.path.join(BASE_DIR, "model.xml"))
 observation, info = env.reset()
 
 episode_over = False
@@ -17,10 +17,7 @@ while not episode_over:
     observation, reward, terminated, truncated, info = env.step(action)
 
     total_reward += float(reward)
-
-    # print(f"Reward: {reward}")
     
     episode_over = terminated or truncated
 
-# print(f"Total Reward: {total_reward}")
 env.close()

@@ -1,0 +1,6 @@
+<mujoco model="pick_object">
+    <body name="object" pos="0.4 0 0.8">
+        <freejoint/>
+        <geom name="object_geom" type="sphere" size="0.035" material="object_mat" mass="0.2" friction="1.5 0.005 0.0001"/>
+    </body>
+</mujoco>

@@ -4,6 +4,12 @@ This repository contains the official codebase for the Bachelor thesis focusing 
 
 This project was built from the ground up for high data throughput, prioritizing native PyTorch/Gymnasium integration to support Reinforcement Learning and Imitation Learning pipelines.
 
+## Approach
+This project aims to extract relevant behaviour from pre-trained computationally heavy foundation Diffusion Models to achieve similar task performance on high-frequency edge robotics. The approach follows the Teacher-Student Distillation model:
+* **The Teacher (Diffusion Policy)**: A pre-trained Diffusion Model capable of expressive, multi-modal behaviour hindered by slow inference times.
+* **The Expert (DPPO)**: The Diffusion Policy is fine-tuned and generalized using Diffusion Proximal Policy Optimization in a simulated environment using reward shaping and domain randomization.
+* **The Student (GMM-SAC Distillation)**: The fine-tuned behviour is distilled into an efficient Gaussian Mixture Model - Soft Actor-Critic policy enabling low latency execution on edge hardware.
+
 ## Prerequisites
 * **Python 3.10, 3.11, or 3.12 (64-bit)**
 
@@ -29,12 +35,6 @@ This repository includes a `Makefile` and `pyproject.toml` to manage dependencie
    source .venv/bin/activate
    ```
 To test the environment run `make test` in the activated environment and to wipe the environment run `make clean`.
-
-## Approach
-This project aims to extract relevant behaviour from pre-trained computationally heavy foundation Diffusion Models to achieve similar task performance on high-frequency edge robotics. The approach follows the Teacher-Student Distillation model:
-* **The Teacher (Diffusion Policy)**: A pre-trained Diffusion Model capable of expressive, multi-modal behaviour hindered by slow inference times.
-* **The Expert (DPPO)**: The Diffusion Policy is fine-tuned and generalized using Diffusion Proximal Policy Optimization in a simulated environment using reward shaping and domain randomization.
-* **The Student (GMM-SAC Distillation)**: The fine-tuned behviour is distilled into an efficient Gaussian Mixture Model - Soft Actor-Critic policy enabling low latency execution on edge hardware.
 
 ## Repository
 This codebase is built modularly using **Hydra** for configuration management and **dm_control** for dynamic XML scene composition. Robots, scenes, and RL algorithms can easily be swapped without rewriting Python logic.

@@ -1,0 +1,69 @@
+light:
+  ceiling_light:
+    diffuse:
+      default: [0.8, 0.8, 0.8]
+      clip: [0.0, 1.0]
+      noise:
+        type: "normal"
+        kwargs:
+          loc: [0.0, 0.0, 0.0]
+          scale: [0.5, 0.5, 0.5]
+  walimex_octabox_left:
+    pos:
+      default: [0.0, 0.0, 0.0]
+      noise:
+        type: "uniform"
+        kwargs:
+          low: [0.0, -0.5, -0.5]
+          high: [0.0, 0.5, 0.5]
+  walimex_octabox_right:
+    pos:
+      default: [0.0, 0.0, 0.0]
+      noise:
+        type: "uniform"
+        kwargs:
+          low: [0.0, -0.5, -0.5]
+          high: [0.0, 0.5, 0.5]
+
+geom:
+  table_surface:
+    size:
+      default: [0.4495, 0.4145, 0.01]
+      noise:
+        type: "uniform"
+        kwargs:
+          high: [0.05, 0.05, 0.01]
+          low: [-0.05, -0.05, 0.01]
+    friction:
+      default: [0.4, 0.005, 0.0001]
+      noise:
+        type: "uniform"
+        kwargs:
+          low: [-0.15, -0.002, 0.0]
+          high: [0.2, 0.005, 0.0]
+      clip: [0.1, 1.0]
+  object_geom:
+    size:
+      default: [0.02, 0.02, 0.06]
+      noise:
+        type: "uniform"
+        kwargs:
+          low: [-0.01, -0.01, -0.01]
+          high: [0.01, 0.01, 0.01]
+    friction:
+      default: [0.5, 0.005, 0.0]
+      noise:
+        type: "uniform"
+        kwargs:
+          low: [-0.2, -0.002, 0.0]
+          high: [0.2, 0.002, 0.0]
+
+joint:
+  object:
+    qpos:
+      default: [0.4, 0.0, 0.85]
+      noise:
+        type: "normal"
+        kwargs:
+          loc: [0.0, 0.0, 0.0]
+          scale: [0.2, 0.2, 0.0]

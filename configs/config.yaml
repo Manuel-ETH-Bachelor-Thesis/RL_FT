@@ -1,0 +1,6 @@
+defaults:
+  - env: pick_place
+  - model: dppo
+  - robot: unitree_g1
+  - scene: randomization
+  - _self_

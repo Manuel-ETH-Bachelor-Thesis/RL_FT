@@ -4,7 +4,7 @@
   <statistic center="1 -0.8 1.1" extent=".35"/>
 
   <visual>
-    <headlight diffuse="0.6 0.6 0.6" ambient="0.1 0.1 0.1" specular="0.9 0.9 0.9"/>
+    <headlight diffuse="0 0 0" ambient="0.05 0.05 0.05" specular="0 0 0"/>
     <rgba haze="0.15 0.25 0.35 1"/>
     <global azimuth="140" elevation="-20"/>
   </visual>
@@ -25,7 +25,9 @@
   </asset>
 
   <worldbody>
+    <include file="lights.xml"/>
     <include file="table.xml"/>
+    <include file="barriers.xml"/>
     <include file="object.xml"/>
     <geom name="floor" size="0 0 0.05" type="plane" material="groundplane"/>
   </worldbody>

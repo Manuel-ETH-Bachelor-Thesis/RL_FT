@@ -1,0 +1,39 @@
+<mujoco model="lights">
+    <body name="walimex_origin_left" pos="0 0.5 1.5">
+      <!-- <geom name="walimex_visual_left" type="sphere" size="0.1" rgba="1 1 1 0.9" contype="0" conaffinity="0"/> -->
+      <light name="walimex_octabox_left" 
+        mode="targetbody" 
+        target="table" 
+        pos="0 0 0" 
+        castshadow="false" 
+        diffuse="0.5 0.5 0.5" 
+        specular="0.3 0.3 0.3" 
+        cutoff="60" 
+        exponent="10"/>
+    </body>
+
+    <body name="walimex_origin_right" pos="0 -0.5 1.5">  
+      <!-- <geom name="walimex_visual_right" type="sphere" size="0.1" rgba="1 1 1 0.9" contype="0" conaffinity="0"/> -->
+      <light name="walimex_octabox_right" 
+        mode="targetbody" 
+        target="table" 
+        pos="0 0 0" 
+        castshadow="false" 
+        diffuse="0.5 0.5 0.5" 
+        specular="0.3 0.3 0.3" 
+        cutoff="60" 
+        exponent="10"/>
+    </body>
+
+    <body name="ceiling_light_origin" pos="0.6 0 2.0">  
+      <!-- <geom name="ceiling_light_visual" pos="0 0 0.05" type="box" size="0.2 0.2 0.01" rgba="1 1 1 0.8" contype="0" conaffinity="0"/> -->
+      <light name="ceiling_light" 
+        dir="0 0 -1" 
+        pos="0 0 0" 
+        castshadow="true" 
+        diffuse="0.8 0.8 0.8" 
+        specular="0.2 0.2 0.2" 
+        cutoff="90" 
+        exponent="1"/>
+    </body>
+</mujoco>

@@ -1,23 +1,33 @@
 import os
+# os.environ["MUJOCO_GL"] = "osmesa" # "egl" on euler cluster
 import numpy as np
 import envs
+import hydra
 import gymnasium as gym
+from omegaconf import DictConfig
 
-BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "resources", "scenes"))
-env = gym.make('PickAndPlace-v0', xml_path=os.path.join(BASE_DIR, "scene.xml"))
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "resources", "custom"))
 
-observation, info = env.reset()
+@hydra.main(version_base=None, config_path="../configs", config_name="config")
+def train(cfg: DictConfig):
+    env = gym.make('PickAndPlace-v0', xml_path=os.path.join(BASE_DIR, "custom_scene.xml"), cfg=cfg)
+    for i in range(10):
+        episode(env)
 
-episode_over = False
-total_reward = 0.0
+def episode(env):
+    observation, info = env.reset()
 
-while not episode_over:
-    action = env.action_space.sample()
+    episode_over = False
+    total_reward = 0.0
 
-    observation, reward, terminated, truncated, info = env.step(action)
+    while not episode_over:
+        action = env.action_space.sample()
 
-    total_reward += float(reward)
-    
-    episode_over = terminated or truncated
+        observation, reward, terminated, truncated, info = env.step(action)
 
-env.close()
+        total_reward += float(reward)
+        
+        episode_over = terminated or truncated
+        print(observation)
+
+train()

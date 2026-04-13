@@ -13,3 +13,12 @@ wandb/
 
 # Build files
 *.egg-info/
+
+# Hydra outputs
+outputs/
+
+# TensorBoard logs
+logs/
+
+# MuJoCo logs
+MUJOCO_LOG.TXT

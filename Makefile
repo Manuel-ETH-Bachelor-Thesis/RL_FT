@@ -7,6 +7,9 @@ ifeq ($(OS),Windows_NT)
 	RM_VENV = if exist .venv rmdir /s /q .venv
 	RM_EGG = if exist RL_FT.egg-info rmdir /s /q RL_FT.egg-info
 	RM_CACHE = for /d /r . %%d in (__pycache__) do @if exist "%%d" rmdir /s /q "%%d"
+	RM_LOGS = if exist logs rmdir /s /q logs
+	RM_OUTPUTS = if exist outputs rmdir /s /q outputs
+	RM_MUJOCO_LOG = if exist MUJOCO_LOG.TXT del /q MUJOCO_LOG.TXT
 else
 	# Unix/Linux/macOS variables
 	PYTHON_GLOBAL = python3
@@ -15,6 +18,9 @@ else
 	RM_VENV = rm -rf .venv
 	RM_EGG = rm -rf *.egg-info
 	RM_CACHE = find . -type d -name "__pycache__" -exec rm -rf {} +
+	RM_LOGS = rm -rf logs
+	RM_OUTPUTS = rm -rf outputs
+	RM_MUJOCO_LOG = rm -f MUJOCO_LOG.TXT
 endif
 
 .PHONY: install clean test
@@ -30,6 +36,9 @@ clean:
 	$(RM_VENV)
 	$(RM_EGG)
 	$(RM_CACHE)
+	$(RM_LOGS)
+	$(RM_OUTPUTS)
+	$(RM_MUJOCO_LOG)
 
 test:
 	$(PYTHON) -c "import mujoco; import gymnasium; print('Success: MuJoCo and Gymnasium are loaded and ready.')"

@@ -20,13 +20,14 @@ class MyCallback(BaseCallback):
             r = self.locals["infos"][0]["episode"]["r"]
             self.rewards.append(r)
             print(f"Episode {self.episode} - Reward: {r}")
-            if self.episode % 5 == 0:
+            if self.episode % 50 == 0:
                 self.ax.clear()
                 self.ax.plot(self.rewards, label="SAC Training", color='blue')
                 self.ax.set_xlabel("Episode")
                 self.ax.set_ylabel("Total Reward")
                 self.ax.set_title("Stable Baselines3 SAC Progress")
                 self.ax.legend()
+                plt.savefig("progress_plot.png")
                 plt.pause(0.001)
             self.episode += 1
         return True
@@ -48,6 +49,6 @@ if __name__ == "__main__":
     total_episodes = 5_000_000
     print(f"Starting training on {num_envs} cores")
     model.learn(total_timesteps=total_episodes, callback=MyCallback())
-    model.save(os.path.join(BASE_DIR, "models", "sac_move"))
+    model.save(os.path.join(BASE_DIR, "models", "sac_move1"))
 
     env.close()

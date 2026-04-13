@@ -6,10 +6,10 @@ from gymnasium.spaces import Box
 class Move(MujocoEnv):
     metadata = {
         "render_modes": ["human", "rgb_array", "depth_array"],
-        "render_fps": 62,
+        "render_fps": 250,
     }
     def __init__(self, xml_path: str, render_mode=None, camera_name="side_tracker"):
-        self.frame_skip = 8
+        self.frame_skip = 1
         
         observation_space = Box(
             low=-np.inf,
@@ -29,7 +29,7 @@ class Move(MujocoEnv):
         self.action_space = Box(
             low=-1.0,
             high=1.0,
-            shape=(29,),
+            shape=(31,),
             dtype=np.float64,
         )
         self.prev_action = None

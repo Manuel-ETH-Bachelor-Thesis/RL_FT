@@ -1,29 +1,16 @@
 import os
+import sys
+import signal
 import gymnasium as gym
 import envs
 from stable_baselines3 import SAC
-from stable_baselines3.common.callbacks import BaseCallback
 from stable_baselines3.common.monitor import Monitor
-from stable_baselines3.common.vec_env import SubprocVecEnv, DummyVecEnv
+from stable_baselines3.common.vec_env import SubprocVecEnv
+from stable_baselines3.common.callbacks import CheckpointCallback
 from gymnasium.wrappers import RescaleAction
 import hydra
 from omegaconf import DictConfig
 from omegaconf import OmegaConf
-
-class MyCallback(BaseCallback):
-    def __init__(self, verbose=0):
-        super().__init__(verbose)
-        self.episode = 0
-
-    def _on_step(self) -> bool:
-        for info in self.locals["infos"]:
-            if "episode" in info:
-                r = info["episode"]["r"]
-                self.episode += 1
-                
-                if self.episode % 10 == 0:
-                    print(f"Episode {self.episode} | Last Reward: {r:.2f}")
-        return True
 
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 
@@ -34,31 +21,50 @@ def make_env(cfg: DictConfig):
         return Monitor(env)
     return _init
 
-
 @hydra.main(version_base=None, config_path="../configs", config_name="config")
 def main(cfg: DictConfig):
-    num_envs = 6
-    
+    num_envs = 32
     cfg_dict = OmegaConf.to_container(cfg, resolve=True)
 
-    env = DummyVecEnv([make_env(cfg_dict) for _ in range(num_envs)])
+    env = SubprocVecEnv([make_env(cfg_dict) for _ in range(num_envs)])
 
     model = SAC(
         "MultiInputPolicy",
         env, 
-        verbose=0, 
+        verbose=0,
+        buffer_size=100_000, 
         seed=42, 
         device="auto",
         tensorboard_log=os.path.join(BASE_DIR, "logs", "sac_tensorboard")
     )
     
+    checkpoint_callback = CheckpointCallback(
+        save_freq=max(1_000_000 // num_envs, 1), 
+        save_path=os.path.join(BASE_DIR, "models", "checkpoints"),
+        name_prefix="sac_model_checkpoint"
+    )
+
+    def handle_termination(sig, frame):
+        print(f"\n[!] Job termination signal ({sig}) caught! Saving emergency backup...")
+        model.save(os.path.join(BASE_DIR, "models", "sac_pick_and_place_interrupted"))
+        env.close()
+        print("Backup saved successfully. Shutting down.")
+        sys.exit(0)
+
+    signal.signal(signal.SIGTERM, handle_termination)
+    signal.signal(signal.SIGINT, handle_termination)
+    
     total_timesteps = 5_000_000
     print(f"Starting training on {num_envs} CPU cores with GPU Neural Network updates...")
     
-    model.learn(total_timesteps=total_timesteps, callback=MyCallback())
-    model.save(os.path.join(BASE_DIR, "models", "sac_pick_and_place"))
-
-    env.close()
+    try:
+        model.learn(total_timesteps=total_timesteps, callback=checkpoint_callback)
+    except Exception as e:
+        print(f"Training crashed with exception: {e}")
+    finally:
+        model.save(os.path.join(BASE_DIR, "models", "sac_pick_and_place_final"))
+        env.close()
+        print("Training complete. Final model saved.")
 
 if __name__ == "__main__":
     main()

@@ -6,6 +6,12 @@ from envs.base_env import BaseRandomizedMujocoEnv
 
 # Dependent on upstream IL setup
 class PickAndPlace(BaseRandomizedMujocoEnv):
+
+    metadata = {
+        "render_modes": ["human", "rgb_array", "depth_array"], 
+        "render_fps": 25
+    }
+    
     def __init__(self, xml_path: str, cfg: DictConfig, randomize: bool = True, **kwargs):
         self.frame_skip = 10
         self.img_size = 128 # Camera
@@ -24,7 +30,6 @@ class PickAndPlace(BaseRandomizedMujocoEnv):
             observation_space=observation_space,
             cfg=cfg,
             randomize=randomize,
-            render_mode="rgb_array",
             **kwargs
         )
 

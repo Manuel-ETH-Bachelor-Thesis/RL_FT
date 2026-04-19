@@ -1,0 +1,89 @@
+qpos:
+Robot Base & Legs (0–18)
+    0–2: floating_base_joint Position (X, Y, Z)
+    3–6: floating_base_joint Orientation (Quaternion: w, x, y, z)
+    7: left_hip_pitch_joint
+    8: left_hip_roll_joint
+    9: left_hip_yaw_joint
+    10: left_knee_joint
+    11: left_ankle_pitch_joint
+    12: left_ankle_roll_joint
+    13: right_hip_pitch_joint
+    14: right_hip_roll_joint
+    15: right_hip_yaw_joint
+    16: right_knee_joint
+    17: right_ankle_pitch_joint
+    18: right_ankle_roll_joint
+
+Robot Upper Body (19–49) — Your observation slice
+    19: waist_yaw_joint
+    20: waist_roll_joint
+    21: waist_pitch_joint
+    22–24: Left Shoulder (Pitch, Roll, Yaw)
+    25: left_elbow_joint
+    26–28: Left Wrist (Roll, Pitch, Yaw)
+    29–31: Left Thumb (Joints 0, 1, 2)
+    32–33: Left Middle Finger (Joints 0, 1)
+    34–35: Left Index Finger (Joints 0, 1)
+    36–38: Right Shoulder (Pitch, Roll, Yaw)
+    39: right_elbow_joint
+    40–42: Right Wrist (Roll, Pitch, Yaw)
+    43–45: Right Thumb (Joints 0, 1, 2)
+    46–47: Right Middle Finger (Joints 0, 1)
+    48–49: Right Index Finger (Joints 0, 1)
+
+World Objects (50–63)
+    50–56: object (Freejoint: 3 pos, 4 quat)
+    57–63: target (Freejoint: 3 pos, 4 quat) — Assumes target body is dynamic
+
+
+
+qvel:
+1. The Lower Body (Indices 0–17)
+    0–2: floating_base_joint Linear Velocity (x,y,z)
+    3–5: floating_base_joint Angular Velocity (ω_x, ω_y, ω_z)
+    6–11: Left Leg joints (Hip Pitch/Roll/Yaw, Knee, Ankle Pitch/Roll)
+    12–17: Right Leg joints (Hip Pitch/Roll/Yaw, Knee, Ankle Pitch/Roll)
+
+2. The Upper Body (Indices 18–48) — Your [18:49] slice
+    18–20: Waist Yaw, Roll, and Pitch
+    21–23: Left Shoulder (Pitch, Roll, Yaw)
+    24: Left Elbow
+    25–27: Left Wrist (Roll, Pitch, Yaw)
+    28–30: Left Thumb (Joints 0, 1, 2)
+    31–32: Left Middle Finger (Joints 0, 1)
+    33–34: Left Index Finger (Joints 0, 1)
+    35–37: Right Shoulder (Pitch, Roll, Yaw)
+    38: Right Elbow
+    39–41: Right Wrist (Roll, Pitch, Yaw)
+    42–44: Right Thumb (Joints 0, 1, 2)
+    45–46: Right Middle Finger (Joints 0, 1)
+    47–48: Right Index Finger (Joints 0, 1)
+
+3. The World Objects (Indices 49–54)
+    49–51: object Linear Velocity (x,y,z)
+    52–54: object Angular Velocity (ω_x, ω_y, ω_z)
+
+
+
+ctrl:
+1. The Waist (Indices 0–2)
+    0: waist_yaw_joint
+    1: waist_roll_joint
+    2: waist_pitch_joint
+
+2. Left Arm & Hand (Indices 3–16)
+    3–5: Left Shoulder (Pitch, Roll, Yaw)
+    6: Left Elbow
+    7–9: Left Wrist (Roll, Pitch, Yaw)
+    10–12: Left Thumb (Joints 0, 1, 2)
+    13–14: Left Middle Finger (Joints 0, 1)
+    15–16: Left Index Finger (Joints 0, 1)
+
+3. Right Arm & Hand (Indices 17–30)
+    17–19: Right Shoulder (Pitch, Roll, Yaw)
+    20: Right Elbow
+    21–23: Right Wrist (Roll, Pitch, Yaw)
+    24–26: Right Thumb (Joints 0, 1, 2)
+    27–28: Right Index Finger (Joints 0, 1) — Note: Index comes before Middle here!
+    29–31: Right Middle Finger (Joints 0, 1)

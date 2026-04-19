@@ -34,6 +34,7 @@
     <include file="object.xml"/>
     <include file="target.xml"/>
     <geom name="floor" size="0 0 0.01" type="plane" material="groundplane" contype="1" conaffinity="1"/>
+    <camera name="top_down_camera" pos="0.6 0 2.5" mode="fixed" fovy="60" xyaxes="0 -1 0 1 0 0"/>
   </worldbody>
 
   <contact>

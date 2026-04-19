@@ -3,7 +3,7 @@ from gymnasium import register
 register(
     id="PickAndPlace-v0",
     entry_point="envs.pick_and_place:PickAndPlace",
-    max_episode_steps=100,
+    max_episode_steps=250,
     kwargs={},
 )
 

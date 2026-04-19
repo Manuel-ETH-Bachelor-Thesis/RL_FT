@@ -7,24 +7,8 @@ light:
         type: "normal"
         kwargs:
           loc: [0.0, 0.0, 0.0]
-          scale: [0.5, 0.5, 0.5]
-  walimex_octabox_left:
-    pos:
-      default: [0.0, 0.0, 0.0]
-      noise:
-        type: "uniform"
-        kwargs:
-          low: [0.0, -0.5, -0.5]
-          high: [0.0, 0.5, 0.5]
-  walimex_octabox_right:
-    pos:
-      default: [0.0, 0.0, 0.0]
-      noise:
-        type: "uniform"
-        kwargs:
-          low: [0.0, -0.5, -0.5]
-          high: [0.0, 0.5, 0.5]
-
+          scale: [0.1, 0.1, 0.1]
+          
 geom:
   table_surface:
     size:
@@ -32,8 +16,8 @@ geom:
       noise:
         type: "uniform"
         kwargs:
-          high: [0.05, 0.05, 0.01]
-          low: [-0.05, -0.05, 0.01]
+          low: [-0.05, -0.05, 0.0]
+          high: [0.05, 0.05, 0.0]
     friction:
       default: [0.4, 0.005, 0.0001]
       noise:
@@ -41,29 +25,22 @@ geom:
         kwargs:
           low: [-0.15, -0.002, 0.0]
           high: [0.2, 0.005, 0.0]
-      clip: [0.1, 1.0]
+          
   object_geom:
     size:
       default: [0.02, 0.02, 0.06]
       noise:
         type: "uniform"
         kwargs:
-          low: [-0.01, -0.01, -0.01]
-          high: [0.01, 0.01, 0.01]
-    friction:
-      default: [0.5, 0.005, 0.0]
-      noise:
-        type: "uniform"
-        kwargs:
-          low: [-0.2, -0.002, 0.0]
-          high: [0.2, 0.002, 0.0]
+          low: [-0.005, -0.005, -0.01]
+          high: [0.005, 0.005, 0.01]
 
 joint:
   object:
     qpos:
-      default: [0.4, 0.0, 0.85]
+      default: [0.5, 0.0, 0.85]
       noise:
-        type: "normal"
+        type: "uniform"
         kwargs:
-          loc: [0.0, 0.0, 0.0]
-          scale: [0.2, 0.2, 0.0]
+          low: [-0.1, -0.1, 0.0]
+          high: [0.1, 0.1, 0.0]

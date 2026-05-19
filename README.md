@@ -14,7 +14,7 @@ This project was built from the ground up for high data throughput, prioritizing
 ## Approach
 This project aims to extract relevant behaviour from pre-trained computationally heavy foundation Diffusion Models to achieve similar task performance on high-frequency edge robotics. The approach follows the Teacher-Student Distillation model:
 * **The Teacher (Diffusion Policy)**: A pre-trained Diffusion Model capable of expressive, multi-modal behaviour hindered by slow inference times.
-* **The Expert (DPPO)**: The Diffusion Policy is fine-tuned and generalized using Diffusion Proximal Policy Optimization in a simulated environment using reward shaping and domain randomization.
+* **The Expert (DPPO)**: The Diffusion Policy is fine-tuned and generalized using [Diffusion Proximal Policy Optimization](https://diffusion-ppo.github.io/) in a simulated environment using reward shaping and domain randomization.
 * **The Student (GMM-SAC Distillation)**: The fine-tuned behviour is distilled into an efficient Gaussian Mixture Model - Soft Actor-Critic policy enabling low latency execution on edge hardware.
 
 ## Prerequisites

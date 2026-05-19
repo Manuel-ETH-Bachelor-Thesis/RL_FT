@@ -4,6 +4,13 @@ This repository contains the official codebase for the Bachelor thesis focusing 
 
 This project was built from the ground up for high data throughput, prioritizing native PyTorch/Gymnasium integration to support Reinforcement Learning and Imitation Learning pipelines.
 
+## Thesis Roadmap
+- [x] Implement simulation environment and evaluation suite for pick-and-place.
+- [x] Establish baselines (diffusion policy only; optional public baselines if needed before the diffusion policy is ready).
+- [x] Implement diffusion model fine-tuning (policy initialisation from diffusion policy, reward shaping, domain randomisation/curriculum).
+- [ ] Implement distillation of the fine-tuned diffusion model into a lightweight GMM-SAC actor.
+- [ ] Run ablations (reward variants, curriculum settings) and report results.
+
 ## Approach
 This project aims to extract relevant behaviour from pre-trained computationally heavy foundation Diffusion Models to achieve similar task performance on high-frequency edge robotics. The approach follows the Teacher-Student Distillation model:
 * **The Teacher (Diffusion Policy)**: A pre-trained Diffusion Model capable of expressive, multi-modal behaviour hindered by slow inference times.
@@ -63,13 +70,6 @@ RL_FT/
 
 ## Results & Hardware Deployment
 ### TODO
-
-## Thesis Roadmap
-- [x] Implement simulation environment and evaluation suite for pick-and-place.
-- [x] Establish baselines (diffusion policy only; optional public baselines if needed before the diffusion policy is ready).
-- [ ] Implement diffusion model fine-tuning (policy initialisation from diffusion policy, reward shaping, domain randomisation/curriculum).
-- [ ] Implement distillation of the fine-tuned diffusion model into a lightweight GMM-SAC actor.
-- [ ] Run ablations (reward variants, curriculum settings) and report results.
 
 ## Acknowledgements
 This Bachelor thesis is developed at **ETH Zürich** under the supervision of Prof. Dr. Christoforos Mavrogiannis, overseen by the [Computational Robotics Lab](https://crl.ethz.ch/index.html) (Prof. Dr. Stelian Coros). Upstream data gathering and diffusion policy training are enabled by the [Product Development Group Zurich](https://pdz.ethz.ch/). Hardware deployment for physical validation are facilitated in collaboration with the [Swiss Cobotics Competence Center](https://s3c.swiss/).

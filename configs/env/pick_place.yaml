@@ -1,1 +1,17 @@
-# Contains reward weights, task logic
+name: pick_place
+
+n_envs: 8
+
+cond_steps: 2
+horizon_steps: 16
+act_steps: 4
+
+obs_dim: 62
+action_dim: 31
+
+max_episode_steps: 2000
+
+reward_horizon: 4
+
+save_video: false
+reset_at_iteration: true

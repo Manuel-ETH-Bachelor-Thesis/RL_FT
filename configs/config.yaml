@@ -4,3 +4,5 @@ defaults:
   - robot: unitree_g1
   - scene: randomization
   - _self_
+
+base_policy_path: "/models/pre_trained/diffusion_policy_final.pth" # Lerobot folder

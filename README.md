@@ -59,6 +59,9 @@ RL_FT/
 └── scripts/                 # Training entry points & result visualizations
 ```
 
+## Acknowledgements
+This Bachelor thesis is developed at **ETH Zürich** under the supervision of Prof. Dr. Christoforos Mavrogiannis, overseen by the [Computational Robotics Lab](https://crl.ethz.ch/index.html) (Prof. Dr. Stelian Coros). Upstream data gathering and diffusion policy training are enabled by the [Product Development Group Zurich](https://pdz.ethz.ch/). Hardware deployment for physical validation are facilitated in collaboration with the [Swiss Cobotics Competence Center](https://s3c.swiss/). Coordination is handled by [MSMD Robotics](https://www.msmdrobotics.com/)
+
 ## Quickstart & Usage
 ### TODO
 
@@ -71,5 +74,3 @@ RL_FT/
 ## Results & Hardware Deployment
 ### TODO
 
-## Acknowledgements
-This Bachelor thesis is developed at **ETH Zürich** under the supervision of Prof. Dr. Christoforos Mavrogiannis, overseen by the [Computational Robotics Lab](https://crl.ethz.ch/index.html) (Prof. Dr. Stelian Coros). Upstream data gathering and diffusion policy training are enabled by the [Product Development Group Zurich](https://pdz.ethz.ch/). Hardware deployment for physical validation are facilitated in collaboration with the [Swiss Cobotics Competence Center](https://s3c.swiss/).
